@@ -8,14 +8,12 @@ import { v2 as cloudinary } from 'cloudinary'
 import stripe from "stripe";
 import razorpay from 'razorpay';
 
-// Gateway Initialize
 const stripeInstance = new stripe(process.env.STRIPE_SECRET_KEY)
 const razorpayInstance = new razorpay({
     key_id: process.env.RAZORPAY_KEY_ID,
     key_secret: process.env.RAZORPAY_KEY_SECRET,
 })
 
-// API to register user
 const registerUser = async (req, res) => {
 
     try {
@@ -35,6 +33,14 @@ const registerUser = async (req, res) => {
         if (password.length < 8) {
             return res.json({ success: false, message: "Please enter a strong password" })
         }
+
+        // --- UPDATED PART START ---
+        // Check if user already exists to prevent duplicate key error
+        const existingUser = await userModel.findOne({ email })
+        if (existingUser) {
+            return res.json({ success: false, message: "User already exists" })
+        }
+        // --- UPDATED PART END ---
 
         // hashing user password
         const salt = await bcrypt.genSalt(10); // the more no. round the more time it will take
