@@ -5,11 +5,10 @@ const Header = () => {
   const [hoverState, setHoverState] = useState(false);
 
   return (
-    // ✅ Change 1: Updated Background Gradient to Teal
-    <div className='relative flex flex-col lg:flex-row bg-gradient-to-br from-teal-900 to-teal-700 rounded-2xl px-8 md:px-16 lg:px-28 overflow-hidden shadow-2xl'>
+    <div className='relative flex flex-col lg:flex-row items-center bg-gradient-to-br from-teal-900 to-teal-700 rounded-2xl px-6 md:px-12 lg:px-16 overflow-hidden shadow-2xl min-h-[500px]'>
 
-      {/* Background Decorative Elements - Updated to Teal */}
-      <div className='absolute inset-0 overflow-hidden'>
+      {/* Background Decorative Elements */}
+      <div className='absolute inset-0 overflow-hidden pointer-events-none'>
         <div className='absolute -top-1/4 -left-1/4 w-[600px] h-[600px] bg-teal-800 rounded-full filter blur-[100px] opacity-20'></div>
         <div className='absolute -bottom-1/4 -right-1/4 w-[600px] h-[600px] bg-teal-600 rounded-full filter blur-[100px] opacity-20'></div>
         <svg className='absolute top-1/4 left-1/4 opacity-5 w-48 h-48 text-teal-300' viewBox='0 0 24 24' fill='none' stroke='currentColor'>
@@ -18,35 +17,33 @@ const Header = () => {
         </svg>
       </div>
 
-      {/* Left Side Content */}
-      <div className='lg:w-1/2 flex flex-col items-start justify-center gap-8 py-16 lg:py-24 z-10'>
-
+      {/* Left Side: Text Content */}
+      <div className='lg:w-1/2 flex flex-col items-start justify-center gap-6 py-12 lg:py-20 z-10 relative'>
+        
         {/* Heading */}
         <div className='relative'>
-          <div className='absolute -left-8 -top-4 w-4 h-4 bg-teal-400 rounded-full animate-pulse'></div>
-          <h1 className='text-4xl md:text-5xl lg:text-[3.5rem] text-white font-bold leading-tight tracking-tight'>
-            Exceptional Care <br />
-            {/* ✅ Change 2: Updated Gradient Text to Teal Palette */}
+          <div className='absolute -left-6 -top-4 w-4 h-4 bg-teal-400 rounded-full animate-pulse hidden md:block'></div>
+          <h1 className='text-4xl md:text-5xl lg:text-[3.5rem] text-white font-bold leading-tight tracking-tight text-left'>
+            Compassionate Care <br />
             <span className='text-transparent bg-clip-text bg-gradient-to-r from-teal-200 to-teal-400'>
-              For Discerning Patients
+              For A Healthier You
             </span>
           </h1>
         </div>
 
         {/* Description */}
-        <p className='text-teal-100/90 text-lg max-w-lg leading-relaxed'>
-          Our concierge medical team provides white-glove service with
-          <span className='font-medium text-white'> same-day appointments</span> and
-          <span className='font-medium text-white'> 24/7 specialist access</span>.
+        <p className='text-teal-100/90 text-lg max-w-lg leading-relaxed text-left'>
+          We are dedicated to providing top-tier medical assistance with trusted specialists, ensuring your well-being with 
+          <span className='font-medium text-white'> 24/7 availability</span> and 
+          <span className='font-medium text-white'> personalized attention</span>.
         </p>
 
-        {/* Buttons - REMOVED Portfolio Button */}
-        <div className='flex flex-col sm:flex-row gap-5 w-full mt-2'>
+        {/* Button */}
+        <div className='flex flex-col sm:flex-row gap-5 mt-2'>
           <a
             href="#speciality"
             onMouseEnter={() => setHoverState(true)}
             onMouseLeave={() => setHoverState(false)}
-            // ✅ Change 3: Updated Button to Primary Teal
             className='group relative overflow-hidden bg-primary hover:bg-teal-800 rounded-full flex items-center justify-center gap-3 px-8 py-4 text-white font-medium text-base transition-all duration-500 hover:shadow-2xl'
           >
             <span className='relative z-10 flex items-center gap-2'>
@@ -58,85 +55,17 @@ const Header = () => {
             <span className='absolute inset-0 bg-gradient-to-r from-teal-500 to-teal-700 opacity-0 group-hover:opacity-100 transition-opacity duration-500'></span>
           </a>
         </div>
-
-        {/* Stats */}
-        <div className='flex flex-wrap items-center gap-6 mt-6'>
-          {/* VIP Members */}
-          <div className='flex items-center gap-3'>
-            <div className='flex -space-x-3'>
-              {[1, 2, 3].map((item) => (
-                <div key={item} className='w-9 h-9 rounded-full bg-white/90 border-2 border-teal-800 shadow-sm'></div>
-              ))}
-              <div className='w-9 h-9 rounded-full bg-teal-800/80 border-2 border-teal-700 shadow-sm flex items-center justify-center text-white text-xs font-bold'>
-                +27
-              </div>
-            </div>
-            <p className='text-teal-100/90 text-sm'>
-              <span className='font-medium text-white'>VIP Members</span>
-            </p>
-          </div>
-
-          {/* Rating */}
-          <div className='flex items-center gap-3'>
-            <div className='relative'>
-              <svg className='w-8 h-8 text-amber-400' viewBox='0 0 24 24' fill='currentColor'>
-                <path d='M11.645 20.91l-.007-.003-.022-.012a15.247 15.247 0 01-.383-.218 25.18 25.18 0 01-4.244-3.17C4.688 15.36 2.25 12.174 2.25 8.25 2.25 5.322 4.714 3 7.688 3A5.5 5.5 0 0112 5.052 5.5 5.5 0 0116.313 3c2.973 0 5.437 2.322 5.437 5.25 0 3.925-2.438 7.111-4.739 9.256a25.175 25.175 0 01-4.244 3.17 15.247 15.247 0 01-.383.219l-.022.012-.007.004-.003.001a.752.752 0 01-.704 0l-.003-.001z' />
-              </svg>
-              <div className='absolute -bottom-1 -right-1 bg-teal-600 rounded-full w-5 h-5 flex items-center justify-center text-white text-xs font-bold border-2 border-teal-900'>
-                5.0
-              </div>
-            </div>
-            <p className='text-teal-100/90 text-sm'>
-              <span className='font-medium text-white'>Patient Rating</span>
-            </p>
-          </div>
-        </div>
       </div>
 
-      {/* Right Side (Image + Floating Cards) */}
-      <div className='lg:w-1/2 relative hidden lg:flex items-end justify-end'>
-        <div className='relative w-full h-full min-h-[500px]'>
-          <img
-            src={assets.header_img}
-            alt="doctor with patient"
-            className='absolute bottom-0 right-0 z-10 w-full max-w-xl h-auto object-contain rounded-tl-[100px] rounded-br-2xl transform translate-y-8 border border-teal-900/30 shadow-2xl'
-          />
-
-          {/* Floating Certification Badge */}
-          <div className='absolute top-16 right-0 bg-white/95 backdrop-blur-sm rounded-xl shadow-2xl p-5 w-56 z-20 border border-gray-100/20'>
-            <div className='flex items-start gap-4'>
-              <div className='bg-teal-100/80 p-2.5 rounded-lg flex-shrink-0'>
-                <svg xmlns='http://www.w3.org/2000/svg' className='h-6 w-6 text-primary' fill='none' viewBox='0 0 24 24' stroke='currentColor'>
-                  <path strokeLinecap='round' strokeLinejoin='round' strokeWidth={2} d='M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z' />
-                </svg>
-              </div>
-              <div>
-                <p className='text-xs text-gray-500 font-medium uppercase tracking-wider'>Certified</p>
-                <p className='font-bold text-teal-900 text-lg'>JCI Accredited</p>
-                <p className='text-gray-500 text-xs mt-1'>Gold Standard in Healthcare</p>
-              </div>
-            </div>
-          </div>
-
-          {/* Appointment Info Card - Updated Gradient */}
-          <div className='absolute bottom-16 left-0 bg-gradient-to-br from-teal-500 to-teal-700 rounded-xl shadow-2xl p-5 w-64 z-20'>
-            <div className='text-white'>
-              <p className='text-sm font-medium opacity-90'>Next Available</p>
-              <p className='text-2xl font-bold mt-1'>Today</p>
-              <p className='text-sm opacity-90 mt-2'>Emergency cases prioritized</p>
-              <div className='w-full bg-white/30 h-px my-3'></div>
-              <p className='text-xs flex items-center gap-1'>
-                <svg className='w-4 h-4' fill='none' stroke='currentColor' viewBox='0 0 24 24'>
-                  <path strokeLinecap='round' strokeLinejoin='round' strokeWidth='2' d='M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z' />
-                </svg>
-                24/7 Availability
-              </p>
-            </div>
-          </div>
-        </div>
+      {/* Right Side: Image */}
+      <div className='lg:w-1/2 flex justify-center lg:justify-end items-end relative z-10 mt-10 lg:mt-0'>
+        <img 
+          src="https://jankalyan.org/VK/Book_online_appointment.png" 
+          alt="Book Online Appointment" 
+          className="w-full max-w-md md:max-w-lg h-auto object-contain drop-shadow-xl hover:scale-105 transition-transform duration-500"
+        />
       </div>
 
-      {/* REMOVED: QR Code Badge Section */}
     </div>
   );
 };
