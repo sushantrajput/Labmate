@@ -5,8 +5,8 @@ import Footer from './components/Footer'
 import Home from './pages/Home'
 import About from './pages/About'
 import Contact from './pages/Contact'
-import Login from './pages/Login'
-import MyAppointments from './pages/MyAppointments' // Assuming this is the correct name
+import Login from './pages/Login' 
+import MyAppointments from './pages/MyAppointments'
 import MyProfile from './pages/MyProfile'
 import Doctors from './pages/Doctors'
 import Appointment from './pages/Appointment'
@@ -19,6 +19,9 @@ const App = () => {
   return (
     <>
       <Navbar />
+     
+      <Login /> 
+      
       <ToastContainer
         position="top-right"
         autoClose={5000}
@@ -31,13 +34,15 @@ const App = () => {
         pauseOnHover
         theme="light"
       />
+      
       <div className='min-h-screen flex flex-col'>
         <main className='flex-grow mx-[5%] md:mx-[5%] py-4'>
           <Routes>
             <Route path='/' element={<Home />} />
             <Route path='/about' element={<About />} />
             <Route path='/contact' element={<Contact />} />
-            <Route path='/login' element={<Login />} />
+          
+            
             <Route path='/my-appointments' element={<MyAppointments />} />
             <Route path='/appointment/:docId' element={<Appointment />} />
             <Route path='/my-profile' element={<MyProfile />} />

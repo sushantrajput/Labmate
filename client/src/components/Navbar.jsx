@@ -25,7 +25,9 @@ const Navbar = () => {
   const navigate = useNavigate();
   const [showMenu, setShowMenu] = useState(false);
   const [showDropdown, setShowDropdown] = useState(false);
-  const { token, setToken, userData } = useContext(AppContext);
+  
+  // 1. Get setShowLogin from AppContext
+  const { token, setToken, userData, setShowLogin } = useContext(AppContext);
 
   const logout = () => {
     localStorage.removeItem('token');
@@ -50,7 +52,8 @@ const Navbar = () => {
         <FaUserMd /><span>Staff Login</span><FaExternalLinkAlt className="text-xs" />
       </a>
       <button
-        onClick={() => navigate("/login")}
+        // 2. Trigger the modal instead of navigating
+        onClick={() => setShowLogin(true)}
         className="flex items-center gap-2 bg-primary hover:bg-teal-700 text-white px-5 py-2.5 rounded-full font-medium shadow-md transition-all duration-300"
       >
         <HiOutlineLogin /><span>Login</span>
@@ -207,7 +210,8 @@ const Navbar = () => {
                   <FaUserMd /><span>Staff Login</span><FaExternalLinkAlt className="text-xs" />
                 </a>
                 <button
-                  onClick={() => { navigate("/login"); setShowMenu(false); }}
+                  // 3. Trigger the modal from mobile drawer
+                  onClick={() => { setShowLogin(true); setShowMenu(false); }}
                   className="w-full flex items-center justify-center gap-2 bg-primary hover:bg-teal-700 text-white px-6 py-3 rounded-full font-medium shadow-md"
                 >
                   <HiOutlineLogin /><span>Patient Login</span>
